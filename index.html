@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Recommender</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0a0a0a, #001f3f);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 50%;
+            background: linear-gradient(135deg, #002855, #003366);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #00d9ff;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 85%;
+            padding: 12px;
+            margin-top: 15px;
+            border: 2px solid #00d9ff;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #001f3f;
+            color: white;
+            outline: none;
+        }
+        button {
+            width: 90%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #00d9ff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #0088cc;
+            transform: scale(1.05);
+        }
+        .medicine-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00d9ff;
+            border: 2px solid #00d9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔍 Personalized Medicine Recommender</h2>
+        <input type="text" id="condition" placeholder="Enter medical condition (e.g., Acne, Fever, Cough)">
+        <button onclick="searchMedicine()">Find Medicine</button>
+        <div id="medicineResult" class="medicine-info" style="display: none;"></div>
+    </div>
+    <script>
+        function searchMedicine() {
+            const condition = document.getElementById('condition').value.toLowerCase();
+            const medicineData = {
+                'acne': { name: 'A CN Gel', description: 'Used for mild to moderate acne.' },
+                'flu': { name: 'Tamiflu', description: 'Helps reduce flu symptoms and recovery time.' },
+                'fever': { name: 'Paracetamol', description: 'Effective for reducing fever and mild pain.' },
+                'cough': { name: 'Benadryl', description: 'Helps relieve cough and throat irritation.' },
+                'cold': { name: 'Cetirizine', description: 'Used to relieve cold and allergy symptoms.' },
+                'diabetes': { name: 'Metformin', description: 'Helps control blood sugar levels in diabetes patients.' },
+                'headache': { name: 'Ibuprofen', description: 'Relieves headaches and reduces inflammation.' },
+                'hypertension': { name: 'Amlodipine', description: 'Used to treat high blood pressure.' },
+                'asthma': { name: 'Albuterol', description: 'Helps open airways in people with asthma.' },
+                'arthritis': { name: 'Naproxen', description: 'Relieves joint pain and inflammation.' },
+                'heartburn': { name: 'Omeprazole', description: 'Reduces stomach acid and treats heartburn.' },
+                'migraine': { name: 'Sumatriptan', description: 'Provides relief from migraines.' },
+                'anxiety': { name: 'Alprazolam', description: 'Used to treat anxiety and panic disorders.' },
+                'depression': { name: 'Fluoxetine', description: 'Helps manage symptoms of depression.' },
+                'insomnia': { name: 'Melatonin', description: 'Aids in sleep regulation.' },
+                'allergies': { name: 'Loratadine', description: 'Treats allergy symptoms like sneezing and itching.' },
+                'skin infection': { name: 'Mupirocin', description: 'Used to treat bacterial skin infections.' }
+            };
+            
+            const resultDiv = document.getElementById('medicineResult');
+            if (medicineData[condition]) {
+                resultDiv.innerHTML = `<strong>Medicine:</strong> ${medicineData[condition].name} <br>
+                                       <strong>Description:</strong> ${medicineData[condition].description}`;
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = 'No medicine found for this condition.';
+                resultDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
